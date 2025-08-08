@@ -1,0 +1,15 @@
+.signal-strength {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.signal-bar {
+  width: 6px;
+  height: 18px;
+  border-radius: $border-radius-sm;
+  background-color: $gray-200;
+
+  &.filled {
+    background-color: $primary-color;
+  }
+}
