@@ -1,0 +1,60 @@
+@use '@/styles/variables' as *;
+
+.towers-table {
+  background: #fff;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  overflow-x: auto;
+  margin-top: $spacing-lg;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    min-width: 600px;
+
+    th {
+      text-align: left;
+      padding: $spacing-md;
+      background: #fff;
+      font-weight: 600;
+    }
+
+    td {
+      padding: $spacing-md;
+      border-top: 1px solid $gray-100;
+    }
+
+    tbody tr:nth-child(even) {
+      background: $gray-50;
+    }
+
+    tbody tr:hover {
+      background: $gray-100;
+    }
+
+    .status-badge {
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-sm;
+      font-size: 0.75rem;
+      font-weight: 500;
+
+      &.active {
+        background: $success-color;
+        color: #fff;
+      }
+
+      &.offline {
+        background: $error-color;
+        color: #fff;
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      padding: $spacing-md;
+      color: $muted-text-color;
+    }
+  }
+}
