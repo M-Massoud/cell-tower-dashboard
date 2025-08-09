@@ -2,7 +2,7 @@
   background-color: $background-color;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: $spacing-lg;
 
   & h1 {
     font-size: 1.875rem;
@@ -19,7 +19,7 @@
   .summary-cards {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: $spacing-lg;
     flex-wrap: wrap;
   }
 }

@@ -1,0 +1,55 @@
+.charts-container {
+  margin-top: $spacing-lg;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+
+  & h2 {
+    font-size: 1.25rem;
+    color: $text-color;
+    text-align: left;
+    width: 100%;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.chart-container {
+  background-color: #fff;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+svg {
+  display: block;
+}
+
+.legend {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  gap: $spacing-lg;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: 0.75rem;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-label {
+  font-weight: 500;
+  font-size: 0.85rem;
+}

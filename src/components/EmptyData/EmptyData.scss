@@ -1,0 +1,9 @@
+.empty-data {
+  & p {
+    text-align: center;
+    padding: $spacing-md;
+    color: $muted-text-color;
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+}

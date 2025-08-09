@@ -3,7 +3,7 @@
 .towers-table {
   background: #fff;
   padding: $spacing-md;
-  border-radius: $border-radius-md;
+  border-radius: $border-radius-lg;
   box-shadow: $shadow-sm;
   overflow-x: auto;
   margin-top: $spacing-lg;
@@ -49,12 +49,6 @@
         background: $error-color;
         color: #fff;
       }
-    }
-
-    .no-data {
-      text-align: center;
-      padding: $spacing-md;
-      color: $muted-text-color;
     }
   }
 }
