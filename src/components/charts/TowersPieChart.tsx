@@ -1,4 +1,4 @@
-import './charts.scss';
+import './Charts.scss';
 import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import type { CellTower } from '../../types/cellTower';
