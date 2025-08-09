@@ -1,3 +1,4 @@
+import './Charts.scss';
 import type { CellTower } from '../../types/cellTower';
 import TowersPerCityBarChart from './TowersBarChart';
 import TowersStatusPieChart from './TowersPieChart';
