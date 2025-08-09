@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { CellTower } from '../types/cellTower';
 import Header from '../components/header';
 import TowersTable from '../components/towers-table';
@@ -24,6 +24,13 @@ export default function Dashboard() {
   const [searchText, setSearchText] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [networkType, setNetworkType] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  // this is to simulate a loading state
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSearchChange = (newSearchText: string) => {
     setSearchText(newSearchText);
@@ -66,9 +73,9 @@ export default function Dashboard() {
         onNetworkTypeChange={handleNetworkTypeChange}
       />
 
-      <TowersTable towers={filteredTowers} />
+      <TowersTable towers={filteredTowers} isLoading={isLoading} />
 
-      <TowersCharts data={filteredTowers} />
+      <TowersCharts data={filteredTowers} isLoading={isLoading} />
     </main>
   );
 }

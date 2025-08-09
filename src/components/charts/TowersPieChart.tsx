@@ -3,14 +3,23 @@ import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import type { CellTower } from '../../types/cellTower';
 import EmptyData from '../EmptyData';
+import LoadingSpinner from '../loading';
 
-export default function TowersStatusPieChart({ data }: { data: CellTower[] }) {
+export default function TowersStatusPieChart({
+  data,
+  isLoading,
+}: {
+  data: CellTower[];
+  isLoading: boolean;
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [counts, setCounts] = useState<
     { status: string; count: number; color: string }[]
   >([]);
 
   useEffect(() => {
+    if (!data || data.length === 0) return;
+
     const statusData = [
       {
         status: 'Active',
@@ -34,7 +43,7 @@ export default function TowersStatusPieChart({ data }: { data: CellTower[] }) {
       .value(d => d.count);
 
     const arc = d3
-      .arc<d3.PieArcDatum<{ status: string; count: number }>>()
+      .arc<d3.PieArcDatum<{ status: string; count: number; color?: string }>>()
       .innerRadius(0)
       .outerRadius(radius);
 
@@ -50,15 +59,20 @@ export default function TowersStatusPieChart({ data }: { data: CellTower[] }) {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', d => d.data.color)
+      .attr('fill', d => d.data.color!)
       .attr('stroke', '#fff')
       .attr('stroke-width', 2);
   }, [data]);
 
   return (
     <div className="chart-container">
-      <h2>Towers status distribution</h2>
-      {data?.length > 0 ? (
+      <h2>Towers Status Distribution</h2>
+
+      {isLoading ? (
+        <div className="chart-loading">
+          <LoadingSpinner />
+        </div>
+      ) : data?.length > 0 ? (
         <>
           <svg ref={svgRef} width={180} height={180}></svg>
           <div className="legend">

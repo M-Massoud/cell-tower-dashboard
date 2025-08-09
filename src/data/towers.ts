@@ -94,7 +94,7 @@ export const towersData: CellTower[] = [
     city: 'Luxor',
     networkType: '5G',
     status: 'offline',
-    signalStrength: 1,
+    signalStrength: 3,
   },
   {
     id: 'l3',

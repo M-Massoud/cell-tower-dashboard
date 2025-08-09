@@ -2,11 +2,20 @@ import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import type { CellTower } from '../../types/cellTower';
 import EmptyData from '../EmptyData';
+import LoadingSpinner from '../loading';
 
-export default function TowersPerCityBarChart({ data }: { data: CellTower[] }) {
+export default function TowersPerCityBarChart({
+  data,
+  isLoading,
+}: {
+  data: CellTower[];
+  isLoading: boolean;
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
+    if (!data || data.length === 0 || isLoading) return; // skip drawing if loading or no data
+
     const cityCounts = d3
       .rollups(
         data,
@@ -65,12 +74,17 @@ export default function TowersPerCityBarChart({ data }: { data: CellTower[] }) {
       .call(d3.axisLeft(y).ticks(5))
       .selectAll('text')
       .style('font-size', '0.85rem');
-  }, [data]);
+  }, [data, isLoading]);
 
   return (
     <div className="chart-container">
       <h2>Towers per city</h2>
-      {data?.length > 0 ? (
+
+      {isLoading ? (
+        <div className="chart-loading">
+          <LoadingSpinner />
+        </div>
+      ) : data?.length > 0 ? (
         <svg ref={svgRef} width={400} height={250}></svg>
       ) : (
         <EmptyData />
