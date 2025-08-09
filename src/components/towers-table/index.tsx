@@ -1,6 +1,7 @@
 import './TowersTable.scss';
 import type { CellTower } from '../../types/cellTower';
 import SignalStrength from '../signal-strength';
+import EmptyData from '../EmptyData';
 
 export default function TowersTable({ towers }: { towers: CellTower[] }) {
   return (
@@ -41,8 +42,8 @@ export default function TowersTable({ towers }: { towers: CellTower[] }) {
               ))
             ) : (
               <tr>
-                <td colSpan={5} className="no-data">
-                  No towers found.
+                <td colSpan={5}>
+                  <EmptyData />
                 </td>
               </tr>
             )}

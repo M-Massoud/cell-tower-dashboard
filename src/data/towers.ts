@@ -26,6 +26,14 @@ export const towersData: CellTower[] = [
     status: 'offline',
     signalStrength: 2,
   },
+  {
+    id: 'c4',
+    name: 'Cairo South',
+    city: 'Cairo',
+    networkType: '5G',
+    status: 'active',
+    signalStrength: 3,
+  },
 
   // Alexandria
   {
@@ -43,14 +51,6 @@ export const towersData: CellTower[] = [
     networkType: '4G',
     status: 'offline',
     signalStrength: 3,
-  },
-  {
-    id: 'a3',
-    name: 'Alex Center',
-    city: 'Alexandria',
-    networkType: '5G',
-    status: 'active',
-    signalStrength: 5,
   },
 
   // Hurghada

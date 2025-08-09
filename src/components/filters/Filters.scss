@@ -10,7 +10,7 @@
   align-items: center;
   gap: $spacing-sm;
   flex: 1;
-  border-radius: $spacing-sm;
+  border-radius: $border-radius-lg;
   padding: $spacing-sm;
   background-color: #fff;
   transition: border-color 0.3s ease;
@@ -34,21 +34,17 @@
   }
 }
 
-.filters-city {
-  select {
-    width: 100%;
-    min-width: 280px;
-    padding: $spacing-md;
-    border-radius: $spacing-sm;
-    border: none;
-    border-right: $spacing-sm solid transparent;
-    background-color: #fff;
-    font-size: $spacing-md;
-    color: #333;
-    transition: border-color 0.3s ease;
+select {
+  min-width: 175px;
+  padding: $spacing-md;
+  border-radius: $border-radius-lg;
+  border: none;
+  border-right: $spacing-sm solid transparent;
+  background-color: #fff;
+  font-size: $spacing-md;
+  color: #333;
 
-    &:focus {
-      outline: none;
-    }
+  &:focus {
+    outline: none;
   }
 }

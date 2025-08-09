@@ -4,6 +4,7 @@ import Header from '../components/header';
 import TowersTable from '../components/towers-table';
 import { towersData } from '../data/towers';
 import Filters from '../components/filters';
+import TowersCharts from '../components/charts';
 
 const totalTowers = towersData.length;
 
@@ -22,6 +23,7 @@ const averageSignal =
 export default function Dashboard() {
   const [searchText, setSearchText] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
+  const [networkType, setNetworkType] = useState('');
 
   const handleSearchChange = (newSearchText: string) => {
     setSearchText(newSearchText);
@@ -31,12 +33,20 @@ export default function Dashboard() {
     setSelectedCity(newCity);
   };
 
+  const handleNetworkTypeChange = (newNetworkType: string) => {
+    setNetworkType(newNetworkType);
+  };
+
   const filteredTowers = towersData.filter(tower => {
     const matchesSearch = tower.name
       .toLowerCase()
       .includes(searchText.toLowerCase());
+
     const matchesCity = selectedCity ? tower.city === selectedCity : true;
-    return matchesSearch && matchesCity;
+
+    const matchesNetwork = networkType ? tower.networkType === networkType : true;
+
+    return matchesSearch && matchesCity && matchesNetwork;
   });
 
   return (
@@ -52,9 +62,13 @@ export default function Dashboard() {
         onSearchTextChange={handleSearchChange}
         selectedCity={selectedCity}
         onCityChange={handleCityChange}
+        networkType={networkType}
+        onNetworkTypeChange={handleNetworkTypeChange}
       />
 
       <TowersTable towers={filteredTowers} />
+
+      <TowersCharts data={filteredTowers} />
     </main>
   );
 }
